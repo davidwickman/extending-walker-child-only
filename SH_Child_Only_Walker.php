@@ -4,27 +4,27 @@ class SH_Child_Only_Walker extends Walker_Nav_Menu {
 	function start_lvl(&$output, $depth=0, $args=array()) {
 		if( 0 == $depth )
 			return;
-		parent::start_lvl(&$output, $depth,$args);
+		parent::start_lvl($output, $depth, $args);
 	}
 
 	// Don't end the top level
 	function end_lvl(&$output, $depth=0, $args=array()) {
 		if( 0 == $depth )
 			return;
-		parent::end_lvl(&$output, $depth,$args);
+		parent::end_lvl($output, $depth, $args);
 	}
 
 	// Don't print top-level elements
 	function start_el(&$output, $item, $depth=0, $args=array()) {
 		if( 0 == $depth )
 			return;
-		parent::start_el(&$output, $item, $depth, $args);
+		parent::start_el($output, $item, $depth, $args);
 	}
 
 	function end_el(&$output, $item, $depth=0, $args=array()) {
 		if( 0 == $depth )
 			return;
-		parent::end_el(&$output, $item, $depth, $args);
+		parent::end_el($output, $item, $depth, $args);
 	}
 
 	// Only follow down one branch
@@ -39,8 +39,8 @@ class SH_Child_Only_Walker extends Walker_Nav_Menu {
 
 		// If this is a top-level link and not the current, or ancestor of the current menu item - stop here.
 		if ( 0 == $depth && !$ancestor_of_current)
-			return
+			return;
 
-		parent::display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output );
+		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
 }
